@@ -17,17 +17,28 @@ class Calculator {
     }
 
     appendNumber(number) {
-        this.calculeActuel = number;
+        if (number === '.' && this.calculeActuel.includes('.')) return
+
+
+        this.calculeActuel = this.calculeActuel.toString() + number.toString();
+
+
+
 
     }
     ChooseOperation(operation) {
-
+        if (this.calculeActuel === '') return
+        this.operation = operation;
+        this.ancienCalcule = this.calculeActuel;
+        this.calculeActuel = '';
     }
     compute() {
 
     }
     updateDisplay() {
         this.calculeActuelElementText.innerText = this.calculeActuel;
+        this.ancienCalculeElementText.innerText = this.ancienCalcule;
+
     }
 
 }
@@ -48,6 +59,14 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
 
         calculator.appendNumber(button.innerText)
+        calculator.updateDisplay();
+    })
+});
+
+buttonOperation.forEach(button => {
+    button.addEventListener('click', () => {
+
+        calculator.ChooseOperation(button.innerText)
         calculator.updateDisplay();
     })
 });
