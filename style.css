@@ -1,0 +1,73 @@
+/*
+Pour toute la page,
+changement police
+*/
+
+* {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    /* fondue de bleu a rouge*/
+    background: linear-gradient(to right, rgb(6, 172, 223), hsl(7, 100%, 50%));
+}
+
+.div-calculette {
+    /* utilisation grid*/
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    /*
+    nombre de colone et ligne de la grid
+
+    */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.div-calculette>button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.div-calculette>button:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    /* prend deux case dans la grid*/
+    grid-column: span 2;
+}
+
+.affichage {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    /*
+    permet au caractere de passé a la ligne et detre lun au dessu de lautre
+    */
+    word-wrap: break-word;
+    word-break: break-all;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.affichage .ancienCalcule {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.affichage .nouveauCalcule {
+    color: white;
+    font-size: 2.5rem;
+}
